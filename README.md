@@ -2,6 +2,7 @@
 ## description
 - This project has the ability to merge multiple svg into one.
 
+## Run project
 1. install package.
  
 ```sh
