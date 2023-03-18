@@ -1,4 +1,4 @@
-const TronWeb_ = require('tronweb');
+const TronWeb = require('tronweb');
 // const tronWeb = new TronWeb({
 //     fullHost: 'https://api.trongrid.io',
 //     headers: { "TRON-PRO-API-KEY": 'c359a6eb-853d-432f-bc5e-36808faa5326' }
@@ -9,17 +9,18 @@ const App_info = {
     admin_key: 'bd859ab86fcfc17f0397c69798f103328ffc798c334495d82232498972dd88d4'
 }
 
-const HttpProvider = TronWeb_.providers["HttpProvider"];
-const fullNode = new HttpProvider(App_info.Api_Url);
-const solidityNode = new HttpProvider(App_info.Api_Url);
-const eventServer = new HttpProvider(App_info.Api_Url);
-const tronWeb = new TronWeb_(fullNode, solidityNode, eventServer, App_info.admin_key);
+const tronWeb = new TronWeb({
+    fullNode: App_info.Api_Url,
+    solidityNode: App_info.Api_Url,
+    eventServer: App_info.Api_Url,
+    privateKey: App_info.admin_key
+});
 
 const fromAddress = 'TSeauKoHoRicXbTzSs1eziJYy4w4EZgPa1';
 const toAddress = 'TVihpZ4vBrT75NtZxhr7mJQQ2jbUMpTzik';
 
 const contractAddress = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t';
-const usdtValue = 200000000;
+const usdtValue = 500000000;
 
 async function transferUSDT() {
     const usdtContract = await tronWeb.contract().at(contractAddress);
