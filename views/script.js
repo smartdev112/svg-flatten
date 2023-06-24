@@ -7,10 +7,14 @@ var draw = SVG().addTo('.logoContainer').size(200, 200)
 // Download SVG File
 function downloadSVG() {
     let svgData = draw.svg();
+    /// Create a fake <a> element
     let fakeLink = document.createElement("a");
+    /// Add image data as href
     fakeLink.setAttribute('href', 'data:image/svg+xml;base64,' + window.btoa(svgData));
     imageName = Math.floor(Math.random() * 1000)
+    /// Add download attribute
     fakeLink.setAttribute('download', imageName + '.svg');
+    /// Simulate click
     fakeLink.click();
 }
 
